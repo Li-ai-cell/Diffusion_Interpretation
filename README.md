@@ -78,8 +78,8 @@ python scene_predictor.py
 
 The classification results and latent vectors from guided diffusion are obtained from previous sections. We need a boundary based on this 1-1 mapping, so use the script:
 
-'''
+```
 python train_boundary.py
-'''
+```
 
 to obtain a boundary for your interpretation.
