@@ -1,5 +1,6 @@
 .DS_Store
 __pycache__/
+guided_diffusion.egg-info/
 classify_image_graph_def.pb
 *.tgz
 *.zip
