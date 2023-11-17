@@ -2,7 +2,8 @@
 
 This repository is based on codebase for [Diffusion Models Beat GANS on Image Synthesis](http://arxiv.org/abs/2105.05233) with repository [openai/guided-diffusion](https://github.com/openai/guided-diffusion) and [Semantic Hierarchy Emerges in Deep Generative Representations for Scene Synthesis](https://arxiv.org/pdf/1911.09267.pdf) with repository [genforce/higan](https://github.com/genforce/higan), aiming to apply interpretations on Diffusion models.
 
-# Download pre-trained models
+# Downloads
+## Download pre-trained models
 
 Before using these models, please review the corresponding [model card](model-card.md) to understand the intended use and limitations of these models.
 
@@ -17,6 +18,19 @@ Model could be used in future development is:
  * LSUN horse (no dropout): [lsun_horse_nodropout.pt](https://openaipublic.blob.core.windows.net/diffusion/jul-2021/lsun_horse_nodropout.pt)
 
 We assume that you have downloaded the relevant model checkpoints into a folder called `pretrained/`.
+
+## Download pretrained classifier
+
+Gain classifier attributes weights from these links: [attributes] (https://github.com/kywch/Vis_places365/blob/master/W_sceneattribute_wideresnet18.npy) [weights] (http://places2.csail.mit.edu/models_places365/resnet152_places365.caffemodel)
+Place your models under 'predictors/pretrain/'
+
+## Download dataset
+
+Use the script in `lsun/` to download whole dataset or certain-class dataset(recommended for our experiment):
+
+```
+python subdownload.py
+```
 
 # Diffusion models
 
@@ -54,4 +68,18 @@ However, only simple image sampling is supported currently and the repo may need
 
 # Classification model
 
-This model is 
+This model's samples will be classied by a resnet in 'predictors/':
+
+```
+python scene_predictor.py
+```
+
+# Boundary model
+
+The classification results and latent vectors from guided diffusion are obtained from previous sections. We need a boundary based on this 1-1 mapping, so use the script:
+
+'''
+python train_boundary.py
+'''
+
+to obtain a boundary for your interpretation.
